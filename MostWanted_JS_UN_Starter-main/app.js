@@ -74,10 +74,8 @@ function mainMenu(person, people) {
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
 
-            
             let personFamily = findPersonFamily(person[0], people);
             alert(personFamily);
-            return app(people);
             break;
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
@@ -197,19 +195,81 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
-function findPersonFamily(person) {
-    let (personFamily = `Parents: ${person.parents[0]}\n`);
-    (personFamily += `Spouse: ${person.currentSpouse[0]}\n`);
+// function findPersonFamily(person) {
+//     let personFamily = `Parents: ${person.parents}\n`;
+//     personFamily += `Spouse: ${person.currentSpouse,firstName} ${person.currentSpouse.lastName}\n`;
+// }
+// function findPersonFamily(person) {
+//     let personFamily = 
+//     personFamily += `Parents: ${person.parents.firstName} ${person.parents.lastName}\n`;
+// }
+
+
+function findPersonFamily(person, people) {
+    let personFamily = person.filter(function(el) {
+        if (person.currentSpouse() === (people.id()) || person.parents === parseInt(people.id())) {
+            return true
+        } else {
+            return false;
+        }
+    });
+    return personFamily;
 }
 
-let personFamily = findPersonFamily;
-alert(personFamily)
 
-// case "family":
-//     //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-//     // HINT: Look for a people-collection stringifier utility function to help
 
-    
-//     let personFamily = findPersonFamily(person[0], people);
-//     alert(personFamily);
-//     break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function searchByTraits(people) {
+    let gender = promptFor("What is the person's eye color?", chars);
+    let dob = promptFor("What is the perons's date of birth?", chars);
+    let height = promptFor("What is the person's height (in inches)?", number);
+    let weight = promptFor("What is the person's weight (in pounds)?", number);
+    let eyeColor = promptFor("What is the person's eye color?", chars);
+    let occupation = promptFor("What is the person's occupation?", chars);
+
+    let searchResults = people.filter(function(person) {
+        if (person.gender === gender) 
+        if (person.dob === dob)
+        if (person.height === height)
+        if (person.weight === weight)
+        if (person.eyeColor === eyeColor)
+        if (person.occupation === occupation)
+        {
+            return true;
+        }
+    });
+    return searchResults;
+}
+
+
+
+
+
+
+
+function searchByName(people) {
+    let firstName = promptFor("What is the person's first name?", chars);
+    let lastName = promptFor("What is the person's last name?", chars);
+
+    // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
+    let foundPerson = people.filter(function (person) {
+        if (person.firstName === firstName && person.lastName === lastName) {
+            return true;
+        }
+    });
+    return foundPerson;
+}
