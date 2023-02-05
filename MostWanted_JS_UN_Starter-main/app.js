@@ -72,6 +72,8 @@ function mainMenu(person, people) {
         case "family":
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
+
+            
             let personFamily = findPersonFamily(person[0], people);
             alert(personFamily);
             break;
@@ -192,8 +194,26 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
-function findPersonFamily(personFamily, currentSpouse, parents) {
-    (personFamily === currentSpouse(0)) & (personFamily === parents(0)); {
-    }
+function findPersonFamily(person) {
+    let personFamily = `Current Spouse: ${person.currentSpouse}\n`;
+    personFamily += `Parents: ${person.parents}\n`;
 }
+
+
+    // case "info":
+    //     //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
+    //     // HINT: Look for a person-object stringifier utility function to help
+    //     let personInfo = displayPerson(person[0]);
+    //     alert(personInfo); 
+    //     break;
+    // case "family":
+    //     //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+    //     // HINT: Look for a people-collection stringifier utility function to help
+
+        
+    //     let personFamily = findPersonFamily(person[0], people);
+    //     alert(personFamily);
+
+
+
 
