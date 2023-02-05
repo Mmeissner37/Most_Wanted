@@ -150,8 +150,10 @@ function displayPerson(person) {
     personInfo += `Eye Color: ${person.eyeColor}\n`;
     personInfo += `Occupation: ${person.occupation}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
-    alert(personInfo);
+        alert(personInfo);
 }
+let personInfo = displayPerson(person)
+
 // End of displayPerson()
 
 /**
@@ -204,25 +206,36 @@ function chars(input) {
 //     personFamily += `Parents: ${person.parents.firstName} ${person.parents.lastName}\n`;
 // }
 
+// !!KEEP THIS CODE!!
+// function findPersonFamily(person, people) {
+//     let personFamily = person.filter(function(el) {
+//         if (person.currentSpouse() === (people.id()) || person.parents === parseInt(people.id())) {
+//             return true
+//         } else {
+//             return false;
+//         }
+//     });
+//     return personFamily;
+// }
+
 
 function findPersonFamily(person, people) {
-    let personFamily = person.filter(function(el) {
-        if (person.currentSpouse() === (people.id()) || person.parents === parseInt(people.id())) {
+    let personFamily = people.filter(function(el) {
+        if ((el.currentSpouse[0] === person.currentSpouse[0]) || (el.parents[0] === person.parents[0])) {
             return true
-        } else {
-            return false;
         }
     });
     return personFamily;
 }
 
 
+function findPersonFamily(person) {
+    let personFamily = `Current Spouse: ${person.currentSpouse.firstName} ${person.currentSpouse.lastName} \n`;
+    personFamily += `Parents: ${person.parents.firstName} ${person.parents.lastName} \n`;
+}
 
-
-
-
-
-
+let personFamily = findPersonFamily;
+alert(personFamily);
 
 
 
@@ -235,41 +248,72 @@ function findPersonFamily(person, people) {
 
 function searchByTraits(people) {
     let gender = promptFor("What is the person's eye color?", chars);
-    let dob = promptFor("What is the perons's date of birth?", chars);
-    let height = promptFor("What is the person's height (in inches)?", number);
-    let weight = promptFor("What is the person's weight (in pounds)?", number);
+    let height = promptFor("What is the person's height (in inches)?", chars);
+    let weight = promptFor("What is the person's weight (in pounds)?", chars);
     let eyeColor = promptFor("What is the person's eye color?", chars);
     let occupation = promptFor("What is the person's occupation?", chars);
 
     let searchResults = people.filter(function(person) {
-        if (person.gender === gender) 
-        if (person.dob === dob)
-        if (person.height === height)
-        if (person.weight === weight)
-        if (person.eyeColor === eyeColor)
-        if (person.occupation === occupation)
+        if (person.gender === gender && 
+            person.height === height &&
+            person.weight === weight &&
+            person.eyeColor === eyeColor && 
+            person.occupation === occupation)
         {
             return true;
         }
     });
     return searchResults;
 }
+searchResults = people.includes(gender, height, weight, eyeColor, occupation);
 
 
-
-
-
-
-
-function searchByName(people) {
-    let firstName = promptFor("What is the person's first name?", chars);
-    let lastName = promptFor("What is the person's last name?", chars);
-
-    // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
-    let foundPerson = people.filter(function (person) {
-        if (person.firstName === firstName && person.lastName === lastName) {
-            return true;
+function searchByTrait(people) {
+    let gender = promptFor("What is the person's eye color?", chars) 
+        if (people.gender === gender) {
+            return people.gender.includes(gender);
         }
-    });
-    return foundPerson;
+    let height = promptFor("What is the person's height (in inches)?", chars) 
+        if (people.height === height) {
+            return people.height.includes(height);
+        }
+    let weight = promptFor("What is the person's weight (in pounds)?", chars)
+        if (people.weight === weight) {
+            return people.weight.includes(weight);
+        }
+    let eyeColor = promptFor("What is the person's eye color?", chars)
+        if (people.eyeColor === eyeColor) {
+            return people.eyeColor.includes(eyeColor);
+        }
+    let occupation = promptFor("What is the person's occupation?", chars);
+        if (people.occupation === occupation) {
+            return people.occupation.includes(occupation);
+        }
+    };
+
+
+
+
+function searchByTraits(people) {
+    let searchType = promptFor(
+        "Do you want to search by one or more traits? Enter 'one' or 'multiple'",
+        oneMultiple
+    ).toLowerCase();
+    let searchResults;
+    // Routes our application based on the user's input
+    switch (searchType) {
+        case "one":
+            searchResults = searchByTrait(people);
+            break;
+        case "mulitple":
+            searchResults = searchByTraits(people);
+            break;
+        default:
+            // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
+            app(people);
+            break;
+    }
+}
+function oneMultiple(input) {
+    return input.toLowerCase() === "one" || input.toLowerCase() === "mulitple";
 }
