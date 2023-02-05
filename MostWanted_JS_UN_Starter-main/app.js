@@ -197,9 +197,13 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
+function findPersonFamily(person) {
+    let (personFamily = `Parents: ${person.parents[0]}\n`);
+    (personFamily += `Spouse: ${person.currentSpouse[0]}\n`);
+}
 
-
-
+let personFamily = findPersonFamily;
+alert(personFamily)
 
 // case "family":
 //     //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
