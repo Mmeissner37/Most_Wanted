@@ -192,4 +192,8 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
+function findPersonFamily(personFamily, currentSpouse, parents) {
+    (personFamily === currentSpouse(0)) & (personFamily === parents(0)); {
+    }
+}
 
