@@ -68,6 +68,7 @@ function mainMenu(person, people) {
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
             alert(personInfo); 
+            return app(people);
             break;
         case "family":
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
@@ -76,6 +77,7 @@ function mainMenu(person, people) {
             
             let personFamily = findPersonFamily(person[0], people);
             alert(personFamily);
+            return app(people);
             break;
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
@@ -86,6 +88,7 @@ function mainMenu(person, people) {
         case "restart":
             // Restart app() from the very beginning
             app(people);
+            return app(people);
             break;
         case "quit":
             // Stop application execution
@@ -194,26 +197,15 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
-function findPersonFamily(person) {
-    let personFamily = `Current Spouse: ${person.currentSpouse}\n`;
-    personFamily += `Parents: ${person.parents}\n`;
-}
-
-
-    // case "info":
-    //     //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
-    //     // HINT: Look for a person-object stringifier utility function to help
-    //     let personInfo = displayPerson(person[0]);
-    //     alert(personInfo); 
-    //     break;
-    // case "family":
-    //     //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-    //     // HINT: Look for a people-collection stringifier utility function to help
-
-        
-    //     let personFamily = findPersonFamily(person[0], people);
-    //     alert(personFamily);
 
 
 
 
+// case "family":
+//     //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+//     // HINT: Look for a people-collection stringifier utility function to help
+
+    
+//     let personFamily = findPersonFamily(person[0], people);
+//     alert(personFamily);
+//     break;
