@@ -235,6 +235,7 @@ function chars(input) {
 
 
 
+
 function findPersonDescendants(person) {  
     let personDescendants = people.filter(function(el) {
      if (el.id === people.parents.id) {
@@ -250,6 +251,7 @@ function findPersonDescendants(person) {
  })
  return personDescendants;
 }
+
 
 
 
