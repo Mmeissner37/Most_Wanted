@@ -150,9 +150,8 @@ function displayPerson(person) {
     personInfo += `Eye Color: ${person.eyeColor}\n`;
     personInfo += `Occupation: ${person.occupation}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
-        alert(personInfo);
+    alert(personInfo);
 }
-let personInfo = displayPerson(person)
 
 // End of displayPerson()
 
@@ -197,19 +196,10 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
-// function findPersonFamily(person) {
-//     let personFamily = `Parents: ${person.parents}\n`;
-//     personFamily += `Spouse: ${person.currentSpouse,firstName} ${person.currentSpouse.lastName}\n`;
-// }
-// function findPersonFamily(person) {
-//     let personFamily = 
-//     personFamily += `Parents: ${person.parents.firstName} ${person.parents.lastName}\n`;
-// }
-
 // !!KEEP THIS CODE!!
 // function findPersonFamily(person, people) {
 //     let personFamily = person.filter(function(el) {
-//         if (person.currentSpouse() === (people.id()) || person.parents === parseInt(people.id())) {
+//         if (person.currentSpouse() === (people.id()) || person.parents === (people.id())) {
 //             return true
 //         } else {
 //             return false;
@@ -219,23 +209,37 @@ function chars(input) {
 // }
 
 
-function findPersonFamily(person, people) {
-    let personFamily = people.filter(function(el) {
-        if ((el.currentSpouse[0] === person.currentSpouse[0]) || (el.parents[0] === person.parents[0])) {
-            return true
+   function findPersonFamily(person, people) {  
+       let personFamily = people.filter(function(el) {
+        if (el.id === person.currentSpouse) {
+            personFamily += (el.firstName) + (el.lastName) `is the spouse \n`;
+        } else {
+            return personFamily;
         }
-    });
+        if ((el.id[0] === person.id[0]) || (el.id[0] === person.id[1])) {
+            personFamily += (el.firstName) + (el.lastName) `is the parent \n`;
+        } else {
+            return false
+        }
+        if (
+            el.parents[0,1] === person.parents[(0, 1)] && 
+            el.id !== person.id && 
+            person.parents[(0, 1)] !== undefined) {
+                personFamily += (el.firstName) + (el.lastName) `is the sibling \n`;
+            };
+    })
     return personFamily;
 }
 
 
-function findPersonFamily(person) {
-    let personFamily = `Current Spouse: ${person.currentSpouse.firstName} ${person.currentSpouse.lastName} \n`;
-    personFamily += `Parents: ${person.parents.firstName} ${person.parents.lastName} \n`;
-}
 
-let personFamily = findPersonFamily;
-alert(personFamily);
+// function findPersonFamily(person) {
+//     let personFamily = `Current Spouse: ${person.currentSpouse} ${person.currentSpouse} \n`;
+//     personFamily += `Parents: ${person.parents} ${person.parents} \n`;
+// }
+
+// let personFamily = findPersonFamily;
+// alert(personFamily);
 
 
 
@@ -265,7 +269,6 @@ function searchByTraits(people) {
     });
     return searchResults;
 }
-searchResults = people.includes(gender, height, weight, eyeColor, occupation);
 
 
 function searchByTrait(people) {
@@ -317,3 +320,14 @@ function searchByTraits(people) {
 function oneMultiple(input) {
     return input.toLowerCase() === "one" || input.toLowerCase() === "mulitple";
 }
+
+
+
+
+
+
+
+
+
+
+
