@@ -234,12 +234,12 @@ function chars(input) {
 
 
 
-function findPersonDescendants(person, people) {  
+function findPersonDescendants(person) {  
     let personDescendants = people.filter(function(el) {
-     if (el.id === person.parents.id) {
-         personFamily += (el.firstName) + (el.lastName) `is the parent \n`;
+     if (el.id === people.parents.id) {
+        personDescendants += (el.firstName) + (el.lastName) `is the parent \n`;
      } else {
-         return personFamily;
+         return personDescendants;
      }
      if ((el.parents[0] === person.id[0])) { 
          personDescendants += (el.firstName) + (el.lastName) `is the parent \n`;
