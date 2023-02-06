@@ -233,19 +233,28 @@ function chars(input) {
 
 
 
-// function findPersonFamily(person) {
-//     let personFamily = `Current Spouse: ${person.currentSpouse} ${person.currentSpouse} \n`;
-//     personFamily += `Parents: ${person.parents} ${person.parents} \n`;
-// }
 
-// let personFamily = findPersonFamily;
-// alert(personFamily);
-
-
-
-
-
-
+function findPersonDescendants(person, people) {  
+    let personDescendants = people.filter(function(el) {
+     if (el.id === person.parents.id) {
+         personFamily += (el.firstName) + (el.lastName) `is the parent \n`;
+     } else {
+         return personFamily;
+     }
+     if ((el.parents[0] === person.id[0])) { 
+         personDescendants += (el.firstName) + (el.lastName) `is the parent \n`;
+     } else {
+         return false
+     }
+     if (
+         el.parents[0,1] === person.parents[(0, 1)] && 
+         el.id !== person.id && 
+         person.parents[(0, 1)] !== undefined) {
+             personDescendants += (el.firstName) + (el.lastName) `is the sibling \n`;
+         };
+ })
+ return personDescendants;
+}
 
 
 
