@@ -234,6 +234,7 @@ function chars(input) {
 
 
 
+
 function findPersonDescendants(person) {  
     let personDescendants = people.filter(function(el) {
      if (el.id === people.parents.id) {
@@ -242,16 +243,10 @@ function findPersonDescendants(person) {
          return personDescendants;
      }
      if ((el.parents[0] === person.id[0])) { 
-         personDescendants += (el.firstName) + (el.lastName) `is the parent \n`;
+         personDescendants += (el.firstName) + (el.lastName) `is the child \n`;
      } else {
          return false
      }
-     if (
-         el.parents[0,1] === person.parents[(0, 1)] && 
-         el.id !== person.id && 
-         person.parents[(0, 1)] !== undefined) {
-             personDescendants += (el.firstName) + (el.lastName) `is the sibling \n`;
-         };
  })
  return personDescendants;
 }
@@ -280,28 +275,32 @@ function searchByTraits(people) {
 }
 
 
-function searchByTrait(people) {
-    let gender = promptFor("What is the person's eye color?", chars) 
-        if (people.gender === gender) {
-            return people.gender.includes(gender);
-        }
-    let height = promptFor("What is the person's height (in inches)?", chars) 
-        if (people.height === height) {
-            return people.height.includes(height);
-        }
-    let weight = promptFor("What is the person's weight (in pounds)?", chars)
-        if (people.weight === weight) {
-            return people.weight.includes(weight);
-        }
-    let eyeColor = promptFor("What is the person's eye color?", chars)
-        if (people.eyeColor === eyeColor) {
-            return people.eyeColor.includes(eyeColor);
-        }
-    let occupation = promptFor("What is the person's occupation?", chars);
-        if (people.occupation === occupation) {
-            return people.occupation.includes(occupation);
-        }
-    };
+function searchByTrait(person) {
+    let gender = promptFor("What is the person's gender?", chars) 
+        if (person.gender === gender) {
+            searchResults += person.gender.includes(gender); 
+        } 
+    }
+
+// function searchByTrait(people) {
+//     let height = promptFor("What is the person's height (in inches)?", chars) 
+//         if (people.height === height) {
+//             return people.height.includes(height);
+//         }
+//     }
+//     let weight = promptFor("What is the person's weight (in pounds)?", chars)
+//         if (people.weight === weight) {
+//             return people.weight.includes(weight);
+//         }
+//     let eyeColor = promptFor("What is the person's eye color?", chars)
+//         if (people.eyeColor === eyeColor) {
+//             return people.eyeColor.includes(eyeColor);
+//         }
+//     let occupation = promptFor("What is the person's occupation?", chars);
+//         if (people.occupation === occupation) {
+//             return people.occupation.includes(occupation);
+//         }
+//     };
 
 
 
