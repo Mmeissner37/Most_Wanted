@@ -283,26 +283,25 @@ function searchByTrait(person) {
             searchResults += person.gender.includes(gender); 
         } 
     }
-
-// function searchByTrait(people) {
-//     let height = promptFor("What is the person's height (in inches)?", chars) 
-//         if (people.height === height) {
-//             return people.height.includes(height);
-//         }
-//     }
-//     let weight = promptFor("What is the person's weight (in pounds)?", chars)
-//         if (people.weight === weight) {
-//             return people.weight.includes(weight);
-//         }
-//     let eyeColor = promptFor("What is the person's eye color?", chars)
-//         if (people.eyeColor === eyeColor) {
-//             return people.eyeColor.includes(eyeColor);
-//         }
-//     let occupation = promptFor("What is the person's occupation?", chars);
-//         if (people.occupation === occupation) {
-//             return people.occupation.includes(occupation);
-//         }
-//     };
+function searchByTrait(people) {
+    let height = promptFor("What is the person's height (in inches)?", chars) 
+        if (people.height === height) {
+            return people.height.includes(height);
+        }
+    }
+    let weight = promptFor("What is the person's weight (in pounds)?", chars)
+        if (people.weight === weight) {
+            return people.weight.includes(weight);
+        }
+    let eyeColor = promptFor("What is the person's eye color?", chars)
+        if (people.eyeColor === eyeColor) {
+            return people.eyeColor.includes(eyeColor);
+        }
+    let occupation = promptFor("What is the person's occupation?", chars);
+        if (people.occupation === occupation) {
+            return people.occupation.includes(occupation);
+        }
+ return searchByTrait()
 
 
 
