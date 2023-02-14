@@ -81,7 +81,8 @@ function mainMenu(person, people) {
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             let personDescendants = findPersonDescendants(person[0], people);
-            alert(personDescendants);
+            // alert(personDescendants);
+            displayPeople(personDescendants)
             break;
         case "restart":
             // Restart app() from the very beginning
@@ -209,47 +210,58 @@ function chars(input) {
 // }
 
 
-   function findPersonFamily(person, people) {  
-       let personFamily = people.filter(function(el) {
-        if (el.id === person.currentSpouse) {
-            personFamily += (el.firstName) + (el.lastName) `is the spouse \n`;
-        } else {
-            return personFamily;
+//    function findPersonFamily(person, people) {  
+//        let personFamily = people.filter(function(el) {
+//         if (el.id === person.currentSpouse) {
+//             personFamily += (el.firstName) + (el.lastName) `is the spouse \n`;
+//         } else {
+//             return personFamily;
+//         }
+//         if ((el.id[0] === person.id[0]) || (el.id[0] === person.id[1])) {
+//             personFamily += (el.firstName) + (el.lastName) `is the parent \n`;
+//         } else {
+//             return false
+//         }
+//         if (
+//             el.parents[0,1] === person.parents[(0, 1)] && 
+//             el.id !== person.id && 
+//             person.parents[(0, 1)] !== undefined) {
+//                 personFamily += (el.firstName) + (el.lastName) `is the sibling \n`;
+//             };
+//     })
+//     return personFamily;
+// }
+
+
+function findPersonFamily(person, people) {
+    let personFamily = people.filter(function(el) {
+        if (el.id.includes(person.currentSpouse)) {
+            return true;
         }
-        if ((el.id[0] === person.id[0]) || (el.id[0] === person.id[1])) {
-            personFamily += (el.firstName) + (el.lastName) `is the parent \n`;
-        } else {
-            return false
-        }
-        if (
-            el.parents[0,1] === person.parents[(0, 1)] && 
-            el.id !== person.id && 
-            person.parents[(0, 1)] !== undefined) {
-                personFamily += (el.firstName) + (el.lastName) `is the sibling \n`;
-            };
-    })
+    });
     return personFamily;
 }
 
 
-
-
-
-
-function findPersonDescendants(person) {  
-    let personDescendants = people.filter(function(el) {
-     if (el.id === people.parents.id) {
-        personDescendants += (el.firstName) + (el.lastName) `is the parent \n`;
-     } else {
-         return personDescendants;
-     }
-     if ((el.parents[0] === person.id[0])) { 
-         personDescendants += (el.firstName) + (el.lastName) `is the child \n`;
-     } else {
-         return false
-     }
- })
- return personDescendants;
+function findPersonDescendants(person, people) {
+    let currentChildren = people.filter(function(el) {
+        if (el.parents.includes(person.id)) {
+            return true
+        }
+    });
+    if (currentChildren[0]) {
+        let currentGrandchildren
+        for (let i = 0; i < currentChildren.length; i++){
+            currentGrandchildren = people.filter(function(el) {
+                if (el.parents.includes(currentChildren[i].id)) {
+                    return true;
+                }
+            })
+        }
+        let descendantsArray = currentChildren.concat(currentGrandchildren)
+        return descendantsArray;
+    }
+    return currentChildren;
 }
 
 
@@ -288,7 +300,6 @@ function searchByTrait(people) {
         if (people.height === height) {
             return people.height.includes(height);
         }
-    }
     let weight = promptFor("What is the person's weight (in pounds)?", chars)
         if (people.weight === weight) {
             return people.weight.includes(weight);
@@ -301,7 +312,9 @@ function searchByTrait(people) {
         if (people.occupation === occupation) {
             return people.occupation.includes(occupation);
         }
- return searchByTrait()
+    return searchByTrait()
+}
+
 
 
 
