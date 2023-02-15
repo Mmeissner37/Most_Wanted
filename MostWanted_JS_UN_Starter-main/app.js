@@ -75,7 +75,8 @@ function mainMenu(person, people) {
             // HINT: Look for a people-collection stringifier utility function to help
 
             let personFamily = findPersonFamily(person[0], people);
-            alert(personFamily);
+            displayPeople(personFamily);
+            return app(people);
             break;
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
@@ -210,37 +211,15 @@ function chars(input) {
 // }
 
 
-//    function findPersonFamily(person, people) {  
-//        let personFamily = people.filter(function(el) {
-//         if (el.id === person.currentSpouse) {
-//             personFamily += (el.firstName) + (el.lastName) `is the spouse \n`;
-//         } else {
-//             return personFamily;
-//         }
-//         if ((el.id[0] === person.id[0]) || (el.id[0] === person.id[1])) {
-//             personFamily += (el.firstName) + (el.lastName) `is the parent \n`;
-//         } else {
-//             return false
-//         }
-//         if (
-//             el.parents[0,1] === person.parents[(0, 1)] && 
-//             el.id !== person.id && 
-//             person.parents[(0, 1)] !== undefined) {
-//                 personFamily += (el.firstName) + (el.lastName) `is the sibling \n`;
-//             };
-//     })
-//     return personFamily;
-// }
-
-
 function findPersonFamily(person, people) {
-    let personFamily = people.filter(function(el) {
-        if (el.id.includes(person.currentSpouse)) {
+    let personSpouse = people.filter(function(el) {
+        if ((el.id) === (person.currentSpouse)) {
             return true;
-        }
-    });
-    return personFamily;
+        };
+    })
+    return personSpouse;
 }
+
 
 
 function findPersonDescendants(person, people) {
